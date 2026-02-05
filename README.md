@@ -73,7 +73,7 @@ Indoor auditorium, MAILAM ENGINEERING COLLEGE, Mailam
 ---
 
 ## 🕒 Date & Time
-on 13.02.2026
+on 13.02.2026 at 9.30 am
 
 ---
 
