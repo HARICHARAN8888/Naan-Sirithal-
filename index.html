@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAAN SIRITHAL 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #fff; }
+    header { padding: 40px 20px; text-align: center; }
+    header h1 { font-size: 3rem; color: #ffcc00; }
+    header p { margin-top: 10px; font-size: 1.1rem; }
+    section { padding: 40px 10%; }
+    h2 { color: #ffcc00; margin-bottom: 20px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card { background: rgba(255,255,255,0.08); padding: 20px; border-radius: 12px; transition: transform 0.3s; }
+    .card:hover { transform: translateY(-8px); }
+    ul { margin-left: 20px; }
+    .info-box { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-top: 20px; }
+    footer { text-align: center; padding: 20px; background: rgba(0,0,0,0.4); }
+    .btn { display: inline-block; margin-top: 20px; padding: 12px 25px; background: #ffcc00; color: #000; border-radius: 25px; text-decoration: none; font-weight: 600; }
+    .btn:hover { background: #ffd633; }
+    form { max-width: 500px; margin: auto; background: rgba(255,255,255,0.1); padding: 25px; border-radius: 12px; }
+    input, select { width: 100%; padding: 12px; margin: 10px 0; border-radius: 6px; border: none; }
+    button { width: 100%; padding: 12px; background: #ffcc00; border: none; font-weight: 600; border-radius: 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎭 NAAN SIRITHAL 2026</h1>
+  <p>National Level Technical & Non-Technical Symposium</p>
+  <p>📅 13.02.2026 | 🕒 9:30 AM</p>
+</header>
+
+<section>
+  <h2>About the Event</h2>
+  <p>Naan Sirithal is a vibrant college symposium that brings together creativity, technology, and fun. The event encourages innovation, teamwork, and talent across both technical and non-technical domains.</p>
+</section>
+
+<section>
+  <h2>💻 Technical Events</h2>
+  <div class="card-grid">
+    <div class="card"><h3>🧠 Paper Presentation</h3><p>Teams of 1–3<br>8 minutes + Q&A</p></div>
+    <div class="card"><h3>💻 Coding Challenge</h3><p>Individual<br>C / C++ / Java / Python</p></div>
+    <div class="card"><h3>🤖 Tech Quiz</h3><p>Team of 2<br>Buzzer & Rapid-fire</p></div>
+    <div class="card"><h3>🌐 Web / App Design</h3><p>Theme on spot<br>Max 2 members</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>🎉 Non-Technical Events</h2>
+  <div class="card-grid">
+    <div class="card"><h3>🎤 Connexion</h3><p>Team of 2<br>Fun rounds</p></div>
+    <div class="card"><h3😂 Meme Creation</h3><p>Individual<br>Creativity based</p></div>
+    <div class="card"><h3>🎭 Short Film / Reel</h3><p>Individual / Team</p></div>
+    <div class="card"><h3>🎶 Fun Games</h3><p>Surprise games</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>📝 Participant Registration</h2>
+  <form id="registerForm">
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="college" placeholder="College Name" required />
+    <select id="event">
+      <option>Paper Presentation</option>
+      <option>Coding Challenge</option>
+      <option>Tech Quiz</option>
+      <option>Web/App Design</option>
+      <option>Connexion</option>
+      <option>Meme Creation</option>
+      <option>Short Film / Reel</option>
+    </select>
+    <button type="submit">Register</button>
+  </form>
+</section>
+
+<section class="info-box">
+  <h2>📍 Venue</h2>
+  <p>Indoor Auditorium, MAILAM ENGINEERING COLLEGE, Mailam</p>
+  <p>👨‍💼 Co-ordinator: V. Sri Hariharan Seshan</p>
+  <p>📞 Contact: 9486975191</p>
+</section>
+
+<footer>
+  <p>© 2026 NAAN SIRITHAL | All Rights Reserved</p>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    db.collection("registrations").add({
+      name: name.value,
+      email: email.value,
+      college: college.value,
+      event: event.value,
+      timestamp: new Date()
+    }).then(() => {
+      alert("Registration Successful!");
+      this.reset();
+    });
+  });
+</script>
+
+</body>
+</html>
